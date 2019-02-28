@@ -1,4 +1,4 @@
-@import "./foudation/reset.css";
+@import "./foudation/reset";
 
 #fixed{
     position:fixed;
@@ -60,7 +60,16 @@ img{
 }
 
 
+.sample{
+    font-size: 30px;
+    line-height:1.6;
+    font-weight:bold;
+    a{
+        text-decoration:none;
+        padding-bottom:2px;
+    }
 
+}
 
 
 
