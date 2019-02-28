@@ -1,0 +1,117 @@
+@import "./foudation/reset.css";
+
+#fixed{
+    position:fixed;
+    width: 100%;
+    margin-top: -70px;
+}
+
+#margin-for-fixed{
+    margin-top:70px;
+}
+
+
+
+header{
+    display: flex;
+    justify-content: space-between;
+    background-color:#1dace0;
+    color: #fff;
+    font-size:18px;
+    padding:5px 0;
+}
+
+.icon{
+ display: flex;
+ align-items: center;
+ margin-left: 80px;
+
+img{
+    height: 60px;
+
+}.name strong{
+    color:#eae51f;
+
+}
+
+}
+
+.header-right{
+    display: flex;
+    align-items: center;
+    margin-right: 80px;
+      li &:firstchild{
+    margin-right: 20px;
+}
+}
+
+#main{
+    font-size:15px;
+    .btn{
+        font-size:12px;
+    }
+    > .footer{
+        width: 100vw;
+    }
+
+    >.hoge{
+        color:#ffff;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .welcome{
+//     display:flex;
+//     justify-content: center;
+//     text-align: center;
+//     flex-direction: column;
+//     background-image: url(../img/background1.jpg);
+//     background-size: cover;
+//     background-repeat: no-repeat;
+//     background-attachment: fixed;
+//     height:500px;
+//     color:#fff;
+
+
+// }
+
+// .title{
+//     font-size: 64px;
+// }
+// .guideline{
+//     margin-top:50px;
+//     font-size:28px;
+//     font-weight:bold;
+//     li{
+//         margin-top: 16px;
+//     >&:first-child{
+//         margin-top:0px;}
+    
+//     }
+ 
+// }
+
+
+
+
+
+
+
+
+ 
