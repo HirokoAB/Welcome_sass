@@ -76,8 +76,7 @@ $btny_liter:rgba($btny,.3);
 
 
 header{
-    display: flex;
-    justify-content: space-between;
+    @include justify($j:space-between);
     background-color:#1dace0;
     color: white;
     font-size:18px;
