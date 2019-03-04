@@ -7,23 +7,16 @@
 //@mixinをまとめたけど。
 
 
-
-// ボタンプロパティ
-@mixin btn($v,$i,$b){
-    background-color: rgba($v);
-    border: $i solid rgba($b);
-}
-
 // flexの揃え
 @mixin justify($j:center){
     display:flex;
     justify-content: $j;
 }
+
 //align
 @mixin align($a:center){
     display:flex;
     align-items: $a;
-
 }
 
 // 文字の太さ・大きさ変更
@@ -43,6 +36,7 @@
     height: $h;
     width:  $w;
 }
+
 // 色の管理
 $btnb:#1dace0;
 $btnb_li:rgba($btnb,.5);
@@ -51,14 +45,13 @@ $btny:#ece323;
 $btny_li :rgba($btny,.5);
 $btny_liter:rgba($btny,.3);
 
-
 // ボタンの雛形
 @mixin btn($v,$i,$d){
     background-color: $v;
     border: $i solid $d;
 }
 
-// formの定型を作ります
+// formの定型
 @mixin form($h){
     height: $h;
     width: 400px;
@@ -176,19 +169,19 @@ header{
 //元の色を元に透明度だけ変更できないか
 
 
-$btnb:#1dace0;
-$btnb_li:rgba($btnb,.5);
-$btnb_liter:rgba($btnb,.3);
-$btny:#ece323;
-$btny_li :rgba($btny,.5);
-$btny_liter:rgba($btny,.3);
+// $btnb:#1dace0;
+// $btnb_li:rgba($btnb,.5);
+// $btnb_liter:rgba($btnb,.3);
+// $btny:#ece323;
+// $btny_li :rgba($btny,.5);
+// $btny_liter:rgba($btny,.3);
 
 
 //ボタンの雛形を作ります
-@mixin btn($v,$i,$d){
-    background-color: $v;
-    border: $i solid $d;
-}
+// @mixin btn($v,$i,$d){
+//     background-color: $v;
+//     border: $i solid $d;
+// }
 
 
 .register{
@@ -245,9 +238,6 @@ $btny_liter:rgba($btny,.3);
 
 //ここからコンタクト//
 
-
-
-
 .contact{
     @include hi_wd(350px,none);
     margin-top: 50px;
@@ -266,24 +256,21 @@ $btny_liter:rgba($btny,.3);
 
 
 /*formの定型を作ります*/
-@mixin form($h){
-    height: $h;
-    width: 400px;
-    box-sizing:border-box;
-    font-size:16px;
-}
+// @mixin form($h){
+//     height: $h;
+//     width: 400px;
+//     box-sizing:border-box;
+//     font-size:16px;
+// }
 
 .form .name,  
 .form .email{
         @include form($h:50px);
     }
 
-
 .form-left{
     margin-right:50px;
 }
-
-
 
 .form .inquiry{
     @include form($h:120px);
@@ -318,10 +305,7 @@ footer{
     }
 }
 
-
 /*メディアクエリ対応*/
-
-
 //mixinの雛形を用意する
 //mixinで呼び出すと以下の指令が入るなり
 @mixin pc {
@@ -372,19 +356,19 @@ footer{
     .form-left{
         margin-right: 0;
         margin-bottom: 30px;
-        }
+            }
     .form .name,.form .email{
         width:80%;
-    }
+            }
     .form .inquiry{
         width:80%;
-    }
+            }
 
     .contact button{
         font-size: 20px;
         padding:5px 40px;
         box-sizing:border-box;
-    }
+            }
 
 }
 
@@ -396,8 +380,8 @@ footer{
            
     & span .header-right{
      display: none;
+            }
     }
-   }
     .title{
         font-size: 30px;
     }
@@ -465,14 +449,14 @@ footer{
 
         .icon{
             display: none;
-        }
+            }
 
         .footer-right{
             margin-right: 0;
+            }
         }
-    }
 
-}
+    }
 
 
 
