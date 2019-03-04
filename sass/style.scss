@@ -1,4 +1,74 @@
-@import "./foudation/reset.css";
+@import "../sass/foudation/reset.css";
+
+
+//定型プロパティの置き場
+//全体を見て共通項を考察
+//あまり定型を多くしたくなかったので
+//@mixinをまとめたけど。
+
+
+
+// ボタンプロパティ
+@mixin btn($v,$i,$b){
+    background-color: rgba($v);
+    border: $i solid rgba($b);
+}
+
+// flexの揃え
+@mixin justify($j:center){
+    display:flex;
+    justify-content: $j;
+}
+//align
+@mixin align($a:center){
+    display:flex;
+    align-items: $a;
+
+}
+
+// 文字の太さ・大きさ変更
+@mixin bold($v){
+    font-size: $v;
+    font-weight: bold;
+}
+
+// 要素の中央揃え
+@mixin column{
+    flex-direction:column;
+    text-align: center;
+}
+
+// 幅と高さ
+@mixin hi_wd($h,$w){
+    height: $h;
+    width:  $w;
+}
+// 色の管理
+$btnb:#1dace0;
+$btnb_li:rgba($btnb,.5);
+$btnb_liter:rgba($btnb,.3);
+$btny:#ece323;
+$btny_li :rgba($btny,.5);
+$btny_liter:rgba($btny,.3);
+
+
+// ボタンの雛形
+@mixin btn($v,$i,$d){
+    background-color: $v;
+    border: $i solid $d;
+}
+
+// formの定型を作ります
+@mixin form($h){
+    height: $h;
+    width: 400px;
+    box-sizing:border-box;
+    font-size:16px;
+}
+
+
+
+/*ここから記述*/
 
 #fixed{
     position:fixed;
@@ -16,18 +86,18 @@ header{
     display: flex;
     justify-content: space-between;
     background-color:#1dace0;
-    color: #fff;
+    color: white;
     font-size:18px;
     padding:5px 0;
+    z-index:3;
 }
 
 .icon{
- display: flex;
- align-items: center;
+@include align;
  margin-left: 80px;
 
-img{
-    height: 60px;
+    & img{
+        height: 60px;
 
 }.name strong{
     color:#eae51f;
@@ -37,75 +107,445 @@ img{
 }
 
 .header-right{
-    display: flex;
-    align-items: center;
+    @include align;
     margin-right: 80px;
-      li &:firstchild{
-    margin-right: 20px;
+        & li:first-child{
+        margin-right: 20px;
+        }
+        // & a{
+        //     text-decoration: none;
+        //     color:#fff;
+        //     font-size: 18px;
+        //     margin-right:20px;
+        // }
+
 }
+.welcome{
+    @include justify;
+    @include column;
+    background-image: url(../img/background1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 500px;
+    color: white   
 }
 
-#main{
-    font-size:15px;
-    .btn{
-        font-size:12px;
-    }
-    > .footer{
-        width: 100vw;
-    }
-
-    >.hoge{
-        color:#ffff;
-    }
+.title{
+    font-size: 64px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// .welcome{
-//     display:flex;
-//     justify-content: center;
-//     text-align: center;
-//     flex-direction: column;
-//     background-image: url(../img/background1.jpg);
-//     background-size: cover;
-//     background-repeat: no-repeat;
-//     background-attachment: fixed;
-//     height:500px;
-//     color:#fff;
-
-
-// }
-
-// .title{
-//     font-size: 64px;
-// }
-// .guideline{
-//     margin-top:50px;
-//     font-size:28px;
-//     font-weight:bold;
-//     li{
-//         margin-top: 16px;
-//     >&:first-child{
-//         margin-top:0px;}
-    
-//     }
  
+.guideline{
+    margin-top:50px;
+    @include bold(28px);
+    
+   
+    & li{
+        margin-top:16px;
+    }
+    & li:first-child{
+        margin-top:0px;
+    }
+
+}
+
+
+.btn-group{
+ margin-top:60px;
+
+}
+
+
+.btn{
+
+    @include hi_wd(55px,170px);
+    margin-left:120px;
+    color:#fff;
+    @include bold(28px);
+    border-radius: 10px;
+    cursor:pointer;
+    &:first-child{
+        margin-left:0px;
+    }
+}
+
+
+//元の色を作る
+//   やりたかった事は透明度だけの変更
+//元の色を元に透明度だけ変更できないか
+
+
+$btnb:#1dace0;
+$btnb_li:rgba($btnb,.5);
+$btnb_liter:rgba($btnb,.3);
+$btny:#ece323;
+$btny_li :rgba($btny,.5);
+$btny_liter:rgba($btny,.3);
+
+
+//ボタンの雛形を作ります
+@mixin btn($v,$i,$d){
+    background-color: $v;
+    border: $i solid $d;
+}
+
+
+.register{
+    @include btn($btnb_li,3px,$btnb_liter);
+     &:hover{
+        background-color: $btnb;
+    }
+}
+
+
+.login{
+    @include btn($btny_li,3px,$btny_liter);
+    &:hover{
+        background-color: $btny;
+    }
+
+}
+
+.curriculum{
+    margin-top:50px;
+}
+
+.sub-title{
+    font-size:36px;
+    text-align:center;
+}
+
+
+
+
+.img-box{
+    margin-top: 50px;
+    @include justify;
+        li{
+            display: flex;
+            @include column;
+            margin-right:60px;
+                &:last-child{
+                margin-right:0px;
+                }
+        
+        img{
+        @include hi_wd(300px,300px);
+        }
+
+        span{
+            font-size: 24px;
+            margin-top:20px;
+        }
+    }
+}
+
+
+
+//ここからコンタクト//
+
+
+
+
+.contact{
+    @include hi_wd(350px,none);
+    margin-top: 50px;
+    @include justify;
+    background-color: #ebf4f5;
+    @include column;
+    .form{
+        margin: 50px 0 40px 0;
+        @include justify;
+        }
+}
+
+.form .name {
+    margin-bottom: 20px;
+}
+
+
+/*formの定型を作ります*/
+@mixin form($h){
+    height: $h;
+    width: 400px;
+    box-sizing:border-box;
+    font-size:16px;
+}
+
+.form .name,  
+.form .email{
+        @include form($h:50px);
+    }
+
+
+.form-left{
+    margin-right:50px;
+}
+
+
+
+.form .inquiry{
+    @include form($h:120px);
+}
+
+.contact button{
+    background-color:$btnb;
+    color:#fff;
+    border-radius: 10px;
+    border:3px solid $btnb;
+    font-size: 24px;
+    box-sizing:border-box;
+    padding:15px 30px;
+    transition-duration: 500ms;
+    &:hover{
+        background-color: #fff;
+        color: btn_b;
+    }
+}
+
+/*footer*/
+
+footer{
+    @include justify($j:space-between);
+    align-items: center;
+    background-color: #233f51;
+    color:#fff;
+    font-size: 18px;
+    padding:5px;
+    .footer-right{
+        margin-right: 80px;
+    }
+}
+
+
+/*メディアクエリ対応*/
+
+
+//mixinの雛形を用意する
+//mixinで呼び出すと以下の指令が入るなり
+@mixin pc {
+  @media only screen and (max-width:1200px){
+    @content;
+ }
+}
+@mixin tab {
+  @media only screen and (max-width:960px){
+    @content;
+ }
+}
+@mixin sp {
+  @media only screen and (max-width:480px){
+    @content;
+ }
+}
+
+
+
+@include pc{
+    .img-box{    
+        justify-content: space-around;
+    & li{
+        margin-right: 30px;
+        }
+    }
+    }
+
+
+@include tab{
+    .img-box{
+        flex-wrap:wrap;
+        align-content:center;
+        & li{
+            margin-top:30px;
+            margin-right:0;
+            } 
+            }
+    .contact{
+        height: 100%;
+        padding:40px 20px;
+        .form{
+            flex-flow: column nowrap;
+            margin:30px 0;
+            }
+        }    
+    .form-left{
+        margin-right: 0;
+        margin-bottom: 30px;
+        }
+    .form .name,.form .email{
+        width:80%;
+    }
+    .form .inquiry{
+        width:80%;
+    }
+
+    .contact button{
+        font-size: 20px;
+        padding:5px 40px;
+        box-sizing:border-box;
+    }
+
+}
+
+@include sp{
+    body{min-width:375px;}
+
+    .icon{
+        margin-left: 20px;
+           
+    & span .header-right{
+     display: none;
+    }
+   }
+    .title{
+        font-size: 30px;
+    }
+    
+    .guideline{
+        margin-top: 30px;
+        font-size: 24px;
+        font-weight: normal;
+    }
+
+    .btn-group{
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        margin-top:40px;
+    }
+    .btn{
+        @include hi_wd(48px,140px);
+        margin-top: 20px;
+        margin-left: 0;
+        @include bold(24px);
+        border-radius: 10px;
+    }
+
+    .btn-group:nth-child(1){
+        margin-top:0px;
+    }
+
+    .sub-title{
+        font-size:24px;
+    }
+
+    .img-box{
+        flex-flow:column nowrap;
+    & li{
+        display: flex;
+        flex-direction:column;
+        align-items: center;
+        margin-right: 0;
+    & :first-child{
+        margin-top:0px;
+    }
+    & span{
+        font-size: 16px;
+        margin-top: 20px;
+    }
+    }
+
+    }
+/*curriculumここまで*/
+
+/*contactここから*/
+    .form .name,
+    .form .email{
+        height: 30px;
+    }
+    
+    .form .inquiry{
+        height:50px;
+    }
+/*contactここまで*/
+/*footerここから*/
+    footer{
+        @include justify;
+
+        .icon{
+            display: none;
+        }
+
+        .footer-right{
+            margin-right: 0;
+        }
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+//ここから下はMEMO   
+
+// $breakpoints:(
+//   l:"only screen and (max-width: 1200px)",
+//   m:"only screen and (max-width: 960px)",
+//   s:"only screen and (max-width: 480px)",
+//   );
+
+// @mixin media($brakpoint){
+//  @if map-has-key($breakpoints,$breakpoint){
+//    @media #{map-get($breakponts,$breakpoint)}{
+//     @content;
+//      }@else{
+//         @error"$breakpointsに#{$breakpoint}というキーはありません";
+//      }
 // }
+// }
+
+
+
+//   @include media(l){
+//     .img-box{
+//     justify-content: space-around;      
+//      & i{
+//         margin-right: 30px;
+//         }
+//     }
+// }
+//   @include media(m){
+//   margin-right: 0px;
+//   margin-top: 30px;
+// }
+
+// @include media(s){
+//   margin-right: 0px;
+//   margin-top: 30px;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   &:nth-child(n+X){
+//     // @extend %
+
+//   }
+// }
+
+// }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
